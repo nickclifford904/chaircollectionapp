@@ -17,10 +17,10 @@ function displayChairs($query): string
     $result = '';
     foreach ($query as $chair) {
         '<div class="chairtitle">';
-        $result .='<h3>' . $chair['chairname'] . '</h3>';
+        $result .='<h3>' . $chair['chairname'] . '</h3></div>';
         '<div class="chairinfo">';
         $result .= '<span>Designer: ' . $chair['designer'] . '</span><br/>';
-        $result .= '<span>Year: ' . $chair['designyear'] . '</span><br/>';
+        $result .= '<span>Year: ' . $chair['designyear'] . '</span><br/></div>';
     }
     return $result;
 }

@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 require '../functions.php';
 
-class tests extends TestCase
+class Tests extends TestCase
 {
     public function testDisplayChairs_success1()
     {
