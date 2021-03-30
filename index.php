@@ -1,17 +1,13 @@
-<?php ?>
+<?php require 'functions.php'?>
 
-<h2>The Chair Collector</h2>
+<h1>The Chair Collector</h1>
 
 <?php
 
-$db = new PDO('mysql:host=db; dbname=chairs', 'root', 'password');
+$db = connectdb();
 $query = $db->prepare('SELECT * FROM `chaircollection`;');
-$query->setFetchMode(PDO::FETCH_ASSOC);
 $query->execute();
 
-    echo '<ul>';
-    foreach ($query as $chair) {
-        echo '<li>The ' . $chair['chairname'] . ' was designed by ' . $chair['designer'] . ' in ' . $chair['designyear'] . '.</li>';
-    }
-    echo '</ul>';
 
+$result = displayChairs($query);
+echo $result;
