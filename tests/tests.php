@@ -14,7 +14,22 @@ class Tests extends TestCase
             'designyear' => '2001'
         ]];
         $result = displayChairs($test_array);
-        $expected = '<h3>highchair' . '</h3>' . '<span>Designer: gary' . '</span><br/>' . '<span>Year: 2001' . '</span><br/>';
+        $expected = '<div class="chairtitle"><h3>highchair' . '</h3></div>' . '<div class="chairinfo"><span>Designer: gary' . '</span><br/>' . '<span>Year: 2001' . '</span><br/></div>';
         $this->assertEquals($result, $expected);
     }
+
+    public function testDisplayChairs_failure1()
+    {
+        $test_array2 = [];
+        $result = displayChairs($test_array2);
+        $expected = "This database is empty!";
+        $this->assertEquals($result, $expected);
+    }
+
+    public function testDisplayChairs_malformed1()
+    {
+        $this->expectException(TypeError::class);
+        displayChairs(false);
+    }
+
 }

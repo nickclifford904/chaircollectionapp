@@ -12,13 +12,17 @@ function connectdb()
 
 /** create a function to display each chair and all their details from the database */
 
-function displayChairs($query): string
+function displayChairs(array $query): string
 {
+    if (empty($query))
+    {
+        return "This database is empty!";
+    }
     $result = '';
     foreach ($query as $chair) {
-        '<div class="chairtitle">';
-        $result .='<h3>' . $chair['chairname'] . '</h3></div>';
-        '<div class="chairinfo">';
+        $result .= '<div class="chairtitle">';
+        $result .= '<h3>' . $chair['chairname'] . '</h3></div>';
+        $result .= '<div class="chairinfo">';
         $result .= '<span>Designer: ' . $chair['designer'] . '</span><br/>';
         $result .= '<span>Year: ' . $chair['designyear'] . '</span><br/></div>';
     }
