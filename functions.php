@@ -23,9 +23,31 @@ function displayChairs($query): string
         $result .= '<div class="chairtitle">';
         $result .= '<h3>' . $chair['chairname'] . '</h3></div>';
         $result .= '<div class="chairinfo">';
-        $result .= '<img src="' . $chair['imagelink'] . '" height="250" /><br>';
+        $result .= '<img src="' . $chair['imagelink'] . '" height="250"  alt="A lovely chair" /><br>';
         $result .= '<span>Designer: ' . $chair['designer'] . '</span><br/>';
         $result .= '<span>Year: ' . $chair['designyear'] . '</span><br/></div>';
     }
     return $result;
 }
+
+/** create a function to insert the POST form data into the database
+
+function insertChair()
+{
+    if(isset($_POST['submit']))
+    {
+    $chairname = $_POST['chairname'];
+    $designer = $_POST['designer'];
+    $designyear = $_POST['designyear'];
+    $imagelink = $_POST['imagelink'];
+
+    $insert = $db->prepare("INSERT INTO `chairs` (`chairname`, `designer`, `designyear`, `imagelink`) VALUE (:chairname, :designer, :designyear, :imagelink);
+    $insert->bindParam(':chairname', $chairname);
+    $insert->bindParam(':designer', $designer);
+    $insert->bindParam(':designyear', $designyear);
+    $insert->bindParam(':imageline', $imagelink);
+    $insert->execute();
+    }
+ };
+
+ */

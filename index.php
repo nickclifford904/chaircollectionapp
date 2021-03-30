@@ -17,17 +17,19 @@ $query->execute();
 ?>
     <h2>Please add more chairs to the collection!</h2>
     <div class="chairinputform">
-    <form method="post" action="functions.php">
-        Chair name : <input type="text" name="chairname" size="50" placeholder="Enter the name of the chair" /><br>
-        Designer's name : <input type="text" name="designer" size="50" placeholder="Enter the name of the designer" /><br>
-        Year : <input type="" name="designyear" size="30" placeholder="Enter the year of the design" /><br>
-        Wikimedia Image Link : <input type="text" name="imagelink" size="40" placeholder="Copy and paste the Wikimedia Image Link" /><br>
-        <input type="submit" value="Submit" />
+    <form method="post" action="index.php">
+        <div>Chair name : <input type="text" name="chairname" size="50" placeholder="Enter the name of the chair" /></div>
+        <div>Designer's name : <input type="text" name="designer" size="50" placeholder="Enter the name of the designer" /></div>
+        <div>Year : <input type="number" name="designyear" size="40" placeholder="Enter the year of the design" /></div>
+        <div>Wikimedia Image Link : <input type="text" name="imagelink" size="40" placeholder="Copy and paste Wikimedia Image Link" /></div>
+        <input name="submit" type="submit" value="Submit" />
     </form></div>
     </body>
     </html>
 
 <?php
+
+
 
 $result = displayChairs($query);
 echo $result;
