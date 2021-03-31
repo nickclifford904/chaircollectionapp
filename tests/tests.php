@@ -11,10 +11,11 @@ class Tests extends TestCase
         $test_array = [[
             'chairname' => 'highchair',
             'designer' => 'gary',
-            'designyear' => '2001'
+            'designyear' => '2001',
+            'imageLink' => 'https://picsum.photos/200/300'
         ]];
         $result = displayChairs($test_array);
-        $expected = '<div class="chairtitle"><h3>highchair' . '</h3></div>' . '<div class="chairinfo"><span>Designer: gary' . '</span><br/>' . '<span>Year: 2001' . '</span><br/></div>';
+        $expected = '<div class="chairtitle"><h3>highchair</h3></div><div class="chairinfo"><img src="" height="250"  alt="A lovely chair" /><br><span>Designer: gary</span><br><span>Year: 2001</span><br></div><form method="post" action="index.php"><input name="delete" type="submit" value="Remove this chair from the collection" /><input type="hidden" name="id" value="" /></form>';
         $this->assertEquals($result, $expected);
     }
 

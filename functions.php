@@ -12,7 +12,7 @@ function connectdb()
 
 /** create a function to display each chair and all their details from the database */
 
-function displayChairs($query): string
+function displayChairs(array $query): string
 {
     if (empty($query))
     {
@@ -24,8 +24,8 @@ function displayChairs($query): string
         $result .= '<h3>' . $chair['chairname'] . '</h3></div>';
         $result .= '<div class="chairinfo">';
         $result .= '<img src="' . $chair['imagelink'] . '" height="250"  alt="A lovely chair" /><br>';
-        $result .= '<span>Designer: ' . $chair['designer'] . '</span><br/>';
-        $result .= '<span>Year: ' . $chair['designyear'] . '</span><br/></div>';
+        $result .= '<span>Designer: ' . $chair['designer'] . '</span><br>';
+        $result .= '<span>Year: ' . $chair['designyear'] . '</span><br></div>';
         $result .= '<form method="post" action="index.php"><input name="delete" type="submit" value="Remove this chair from the collection" /><input type="hidden" name="id" value="' . $chair['id'] . '" /></form>';
     }
     return $result;
