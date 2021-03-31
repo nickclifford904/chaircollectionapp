@@ -13,7 +13,8 @@
 
 $db = connectdb();
 insertChair($db);
-$query = $db->prepare('SELECT `chairname`, `designer`, `designyear`, `imagelink` FROM `chaircollection`;');
+deleteChair($db);
+$query = $db->prepare('SELECT `id`, `chairname`, `designer`, `designyear`, `imagelink`, `deleted` FROM `chaircollection` WHERE NOT `deleted` = "1"');
 $query->execute();
 ?>
 
