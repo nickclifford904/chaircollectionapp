@@ -38,7 +38,7 @@ function displayChairs($query): string
 function insertChair(PDO $db){
 
     if(isset($_POST['submit'])
-        && (!empty($_POST['chairname']) && !empty($_POST['designer']) && !empty($_POST['designyear']) && !empty($_POST['imagelink'])))
+        && (!empty($_POST['chairname']) && ($_POST['designer']) && ($_POST['designyear']) && ($_POST['imagelink'])))
     {
         $chairname = $_POST['chairname'];
         $designer = $_POST['designer'];
