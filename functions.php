@@ -31,23 +31,28 @@ function displayChairs($query): string
 }
 
 /** create a function to insert the POST form data into the database
-
-function insertChair()
-{
-    if(isset($_POST['submit']))
-    {
-    $chairname = $_POST['chairname'];
-    $designer = $_POST['designer'];
-    $designyear = $_POST['designyear'];
-    $imagelink = $_POST['imagelink'];
-
-    $insert = $db->prepare("INSERT INTO `chairs` (`chairname`, `designer`, `designyear`, `imagelink`) VALUE (:chairname, :designer, :designyear, :imagelink);
-    $insert->bindParam(':chairname', $chairname);
-    $insert->bindParam(':designer', $designer);
-    $insert->bindParam(':designyear', $designyear);
-    $insert->bindParam(':imageline', $imagelink);
-    $insert->execute();
-    }
- };
+ * @param PDO $db
 
  */
+
+function insertChair(PDO $db){
+
+    if(isset($_POST['submit'])
+        && (!empty($_POST['chairname']) && !empty($_POST['designer']) && !empty($_POST['designyear']) && !empty($_POST['imagelink'])))
+    {
+        $chairname = $_POST['chairname'];
+        $designer = $_POST['designer'];
+        $designyear = $_POST['designyear'];
+        $imagelink = $_POST['imagelink'];
+
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $insertchair = $db->prepare("INSERT INTO `chaircollection` (`chairname`, `designer`, `designyear`, `imagelink`) VALUE (:chairname, :designer, :designyear, :imagelink)");
+    $insertchair->bindParam(':chairname', $chairname);
+    $insertchair->bindParam(':designer', $designer);
+    $insertchair->bindParam(':designyear', $designyear);
+    $insertchair->bindParam(':imagelink', $imagelink);
+    $insertchair->execute();
+    }
+
+}
