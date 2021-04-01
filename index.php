@@ -16,6 +16,7 @@ insertChair($db);
 deleteChair($db);
 $query = $db->prepare('SELECT `id`, `chairname`, `designer`, `designyear`, `imagelink`, `deleted` FROM `chaircollection` WHERE NOT `deleted` = "1"');
 $query->execute();
+$data = $query->fetchAll();
 ?>
 
     <h2>Please add more chairs to the collection!</h2>
@@ -32,7 +33,7 @@ $query->execute();
 <?php
 
 
-$result = displayChairs($query);
+$result = displayChairs($data);
 echo $result;
 ?>
 
